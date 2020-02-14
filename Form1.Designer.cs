@@ -300,6 +300,8 @@
             this.targetPicture.Size = new System.Drawing.Size(40, 57);
             this.targetPicture.TabIndex = 4;
             this.targetPicture.TabStop = false;
+            this.targetPicture.MouseDown += new System.Windows.Forms.MouseEventHandler(this.targetPicture_MouseDown);
+            this.targetPicture.MouseUp += new System.Windows.Forms.MouseEventHandler(this.targetPicture_MouseUp);
             // 
             // timer1
             // 

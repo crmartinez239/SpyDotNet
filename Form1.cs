@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -28,7 +29,10 @@ namespace SpyDotNet
         [DllImport("user32.dll", ExactSpelling = true, CharSet = CharSet.Auto)]
         public static extern IntPtr GetParent(IntPtr hWnd);
 
-        public static string GetText(IntPtr hWnd)
+        private const int CURSOR_TARGET = 0;
+        private const int CURSOR_NORMAL = 1;
+
+        private string GetText(IntPtr hWnd)
         {
             int windowLength = GetWindowTextLength(hWnd);
             StringBuilder windowText = new StringBuilder(windowLength + 1);
@@ -36,11 +40,26 @@ namespace SpyDotNet
             return windowText.ToString();
         }
 
-        public static string GetClass(IntPtr hWnd)
+        private string GetClass(IntPtr hWnd)
         {
             StringBuilder className = new StringBuilder(256);
             GetClassName(hWnd, className, className.Capacity);
             return className.ToString();
+        }
+
+        private void SetCursor(int cursorType)
+        {
+            if (cursorType == CURSOR_TARGET)
+            { 
+                using (MemoryStream memoryStream = new MemoryStream(Properties.Resources.Target))
+                {
+                    this.Cursor = new Cursor(memoryStream);
+                }
+            }
+            else
+            {
+                this.Cursor = Cursors.Default;
+            }
         }
 
         public mainForm()
@@ -69,5 +88,15 @@ namespace SpyDotNet
                 parentWindowClass.Text = String.Empty;
             }
         }
-    }
+
+        private void targetPicture_MouseDown(object sender, MouseEventArgs e)
+        {
+            SetCursor(CURSOR_TARGET);
+        }
+
+        private void targetPicture_MouseUp(object sender, MouseEventArgs e)
+        {
+            SetCursor(CURSOR_NORMAL);
+        }
+    }       
 }
