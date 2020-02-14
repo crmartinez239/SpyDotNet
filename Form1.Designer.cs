@@ -28,17 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainForm));
             this.label1 = new System.Windows.Forms.Label();
             this.currentWindowHandle = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.copyCurrentClass = new System.Windows.Forms.Button();
+            this.copyCurrentText = new System.Windows.Forms.Button();
             this.copyCurrentHandle = new System.Windows.Forms.Button();
             this.currentWindowClass = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.currentWindowText = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.copyCurrentText = new System.Windows.Forms.Button();
-            this.copyCurrentClass = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.copyParentClass = new System.Windows.Forms.Button();
             this.copyParentText = new System.Windows.Forms.Button();
@@ -49,10 +50,11 @@
             this.label5 = new System.Windows.Forms.Label();
             this.parentWindowHandle = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.targetPicture = new System.Windows.Forms.PictureBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.targetPicture)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -93,6 +95,30 @@
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Current Window";
+            // 
+            // copyCurrentClass
+            // 
+            this.copyCurrentClass.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("copyCurrentClass.BackgroundImage")));
+            this.copyCurrentClass.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.copyCurrentClass.FlatAppearance.BorderSize = 0;
+            this.copyCurrentClass.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.copyCurrentClass.Location = new System.Drawing.Point(166, 79);
+            this.copyCurrentClass.Name = "copyCurrentClass";
+            this.copyCurrentClass.Size = new System.Drawing.Size(16, 16);
+            this.copyCurrentClass.TabIndex = 7;
+            this.copyCurrentClass.UseVisualStyleBackColor = true;
+            // 
+            // copyCurrentText
+            // 
+            this.copyCurrentText.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("copyCurrentText.BackgroundImage")));
+            this.copyCurrentText.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.copyCurrentText.FlatAppearance.BorderSize = 0;
+            this.copyCurrentText.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.copyCurrentText.Location = new System.Drawing.Point(166, 55);
+            this.copyCurrentText.Name = "copyCurrentText";
+            this.copyCurrentText.Size = new System.Drawing.Size(16, 16);
+            this.copyCurrentText.TabIndex = 6;
+            this.copyCurrentText.UseVisualStyleBackColor = true;
             // 
             // copyCurrentHandle
             // 
@@ -147,30 +173,6 @@
             this.label2.Size = new System.Drawing.Size(34, 17);
             this.label2.TabIndex = 2;
             this.label2.Text = "Text";
-            // 
-            // copyCurrentText
-            // 
-            this.copyCurrentText.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("copyCurrentText.BackgroundImage")));
-            this.copyCurrentText.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.copyCurrentText.FlatAppearance.BorderSize = 0;
-            this.copyCurrentText.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.copyCurrentText.Location = new System.Drawing.Point(166, 55);
-            this.copyCurrentText.Name = "copyCurrentText";
-            this.copyCurrentText.Size = new System.Drawing.Size(16, 16);
-            this.copyCurrentText.TabIndex = 6;
-            this.copyCurrentText.UseVisualStyleBackColor = true;
-            // 
-            // copyCurrentClass
-            // 
-            this.copyCurrentClass.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("copyCurrentClass.BackgroundImage")));
-            this.copyCurrentClass.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.copyCurrentClass.FlatAppearance.BorderSize = 0;
-            this.copyCurrentClass.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.copyCurrentClass.Location = new System.Drawing.Point(166, 79);
-            this.copyCurrentClass.Name = "copyCurrentClass";
-            this.copyCurrentClass.Size = new System.Drawing.Size(16, 16);
-            this.copyCurrentClass.TabIndex = 7;
-            this.copyCurrentClass.UseVisualStyleBackColor = true;
             // 
             // groupBox2
             // 
@@ -289,22 +291,27 @@
             this.label6.TabIndex = 0;
             this.label6.Text = "Handle";
             // 
-            // pictureBox1
+            // targetPicture
             // 
-            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pictureBox1.Location = new System.Drawing.Point(213, 102);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(40, 57);
-            this.pictureBox1.TabIndex = 4;
-            this.pictureBox1.TabStop = false;
+            this.targetPicture.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("targetPicture.BackgroundImage")));
+            this.targetPicture.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.targetPicture.Location = new System.Drawing.Point(213, 102);
+            this.targetPicture.Name = "targetPicture";
+            this.targetPicture.Size = new System.Drawing.Size(40, 57);
+            this.targetPicture.TabIndex = 4;
+            this.targetPicture.TabStop = false;
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(265, 251);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.targetPicture);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -315,11 +322,12 @@
             this.Name = "mainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SpyDotNet";
+            this.TopMost = true;
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.targetPicture)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -346,7 +354,8 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox parentWindowHandle;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox targetPicture;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 
