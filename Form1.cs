@@ -25,13 +25,15 @@ namespace SpyDotNet
         [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Auto)]
         static extern int GetClassName(IntPtr hWnd, StringBuilder lpClassName, int nMaxCount);
 
+        [DllImport("user32.dll", ExactSpelling = true, CharSet = CharSet.Auto)]
+        public static extern IntPtr GetParent(IntPtr hWnd);
+
         public static string GetText(IntPtr hWnd)
         {
-            // Allocate correct string length first
-            int length = GetWindowTextLength(hWnd);
-            StringBuilder sb = new StringBuilder(length + 1);
-            GetWindowText(hWnd, sb, sb.Capacity);
-            return sb.ToString();
+            int windowLength = GetWindowTextLength(hWnd);
+            StringBuilder windowText = new StringBuilder(windowLength + 1);
+            GetWindowText(hWnd, windowText, windowText.Capacity);
+            return windowText.ToString();
         }
 
         public static string GetClass(IntPtr hWnd)
@@ -52,6 +54,20 @@ namespace SpyDotNet
             currentWindowHandle.Text = currentWindow.ToString();
             currentWindowText.Text = GetText(currentWindow);
             currentWindowClass.Text = GetClass(currentWindow);
+
+            IntPtr parentWindow = GetParent(currentWindow);
+            if (parentWindow != IntPtr.Zero)
+            {
+                parentWindowHandle.Text = parentWindow.ToString();
+                parentWindowText.Text = GetText(parentWindow);
+                parentWindowClass.Text = GetClass(parentWindow);
+            }
+            else
+            {
+                parentWindowHandle.Text = String.Empty;
+                parentWindowText.Text = String.Empty;
+                parentWindowClass.Text = String.Empty;
+            }
         }
     }
 }
