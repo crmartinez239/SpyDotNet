@@ -82,5 +82,11 @@
   <ItemGroup>
     <EmbeddedResource Include="Target.cur" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="res\stop.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="res\target.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
