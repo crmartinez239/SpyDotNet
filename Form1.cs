@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SpyDotNet
@@ -31,6 +26,9 @@ namespace SpyDotNet
 
         private const int CURSOR_TARGET = 0;
         private const int CURSOR_NORMAL = 1;
+
+        private const int PICTURE_TARGET = 0;
+        private const int PICTURE_STOP = 1;
 
         private string GetText(IntPtr hWnd)
         {
@@ -59,6 +57,18 @@ namespace SpyDotNet
             else
             {
                 this.Cursor = Cursors.Default;
+            }
+        }
+
+        private void SetPicture(int pictureType)
+        {
+            if (pictureType == PICTURE_TARGET)
+            {
+                targetPicture.Image = Properties.Resources.target1;
+            }
+            else
+            {
+                targetPicture.Image = Properties.Resources.Stop.ToBitmap();
             }
         }
 
@@ -91,12 +101,26 @@ namespace SpyDotNet
 
         private void targetPicture_MouseDown(object sender, MouseEventArgs e)
         {
-            SetCursor(CURSOR_TARGET);
+            if (timer1.Enabled)
+            {
+                SetCursor(CURSOR_TARGET);
+                targetPicture.Image = null;
+            }
         }
 
         private void targetPicture_MouseUp(object sender, MouseEventArgs e)
         {
             SetCursor(CURSOR_NORMAL);
+            if (timer1.Enabled)
+            {
+                timer1.Enabled = false;
+                SetPicture(PICTURE_STOP);
+            }
+            else
+            {
+                timer1.Enabled = true;
+                SetPicture(PICTURE_TARGET);
+            }
         }
     }       
 }

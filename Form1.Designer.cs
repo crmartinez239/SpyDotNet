@@ -293,11 +293,12 @@
             // 
             // targetPicture
             // 
-            this.targetPicture.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("targetPicture.BackgroundImage")));
             this.targetPicture.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.targetPicture.Location = new System.Drawing.Point(281, 103);
+            this.targetPicture.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.targetPicture.Image = global::SpyDotNet.Properties.Resources.target1;
+            this.targetPicture.Location = new System.Drawing.Point(281, 117);
             this.targetPicture.Name = "targetPicture";
-            this.targetPicture.Size = new System.Drawing.Size(40, 57);
+            this.targetPicture.Size = new System.Drawing.Size(32, 32);
             this.targetPicture.TabIndex = 4;
             this.targetPicture.TabStop = false;
             this.targetPicture.MouseDown += new System.Windows.Forms.MouseEventHandler(this.targetPicture_MouseDown);
