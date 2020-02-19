@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainForm));
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.currentWindowHandle = new System.Windows.Forms.TextBox();
             this.copyCurrentClass = new System.Windows.Forms.Button();
             this.copyCurrentText = new System.Windows.Forms.Button();
             this.copyCurrentHandle = new System.Windows.Forms.Button();
@@ -51,7 +52,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.targetPicture = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.currentWindowHandle = new System.Windows.Forms.TextBox();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.targetPicture)).BeginInit();
@@ -84,6 +85,18 @@
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Current Window";
+            // 
+            // currentWindowHandle
+            // 
+            this.currentWindowHandle.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.currentWindowHandle.Location = new System.Drawing.Point(67, 29);
+            this.currentWindowHandle.Name = "currentWindowHandle";
+            this.currentWindowHandle.ReadOnly = true;
+            this.currentWindowHandle.Size = new System.Drawing.Size(169, 18);
+            this.currentWindowHandle.TabIndex = 8;
+            this.currentWindowHandle.Text = "1232139087";
+            this.currentWindowHandle.WordWrap = false;
+            this.currentWindowHandle.MouseHover += new System.EventHandler(this.textBox_MouseHover);
             // 
             // copyCurrentClass
             // 
@@ -134,6 +147,7 @@
             this.currentWindowClass.TabIndex = 5;
             this.currentWindowClass.Text = "1232139087";
             this.currentWindowClass.WordWrap = false;
+            this.currentWindowClass.MouseHover += new System.EventHandler(this.textBox_MouseHover);
             // 
             // label3
             // 
@@ -155,6 +169,7 @@
             this.currentWindowText.TabIndex = 3;
             this.currentWindowText.Text = "1232139087";
             this.currentWindowText.WordWrap = false;
+            this.currentWindowText.MouseHover += new System.EventHandler(this.textBox_MouseHover);
             // 
             // label2
             // 
@@ -233,6 +248,7 @@
             this.parentWindowClass.TabIndex = 5;
             this.parentWindowClass.Text = "1232139087";
             this.parentWindowClass.WordWrap = false;
+            this.parentWindowClass.MouseHover += new System.EventHandler(this.textBox_MouseHover);
             // 
             // label4
             // 
@@ -254,6 +270,7 @@
             this.parentWindowText.TabIndex = 3;
             this.parentWindowText.Text = "1232139087";
             this.parentWindowText.WordWrap = false;
+            this.parentWindowText.MouseHover += new System.EventHandler(this.textBox_MouseHover);
             // 
             // label5
             // 
@@ -275,6 +292,7 @@
             this.parentWindowHandle.TabIndex = 1;
             this.parentWindowHandle.Text = "1232139087";
             this.parentWindowHandle.WordWrap = false;
+            this.parentWindowHandle.MouseHover += new System.EventHandler(this.textBox_MouseHover);
             // 
             // label6
             // 
@@ -303,17 +321,6 @@
             // 
             this.timer1.Enabled = true;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // currentWindowHandle
-            // 
-            this.currentWindowHandle.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.currentWindowHandle.Location = new System.Drawing.Point(67, 29);
-            this.currentWindowHandle.Name = "currentWindowHandle";
-            this.currentWindowHandle.ReadOnly = true;
-            this.currentWindowHandle.Size = new System.Drawing.Size(169, 18);
-            this.currentWindowHandle.TabIndex = 8;
-            this.currentWindowHandle.Text = "1232139087";
-            this.currentWindowHandle.WordWrap = false;
             // 
             // mainForm
             // 
@@ -365,6 +372,7 @@
         private System.Windows.Forms.PictureBox targetPicture;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.TextBox currentWindowHandle;
+        private System.Windows.Forms.ToolTip toolTip;
     }
 }
 

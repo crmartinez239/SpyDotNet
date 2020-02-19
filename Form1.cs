@@ -48,7 +48,7 @@ namespace SpyDotNet
         private void SetCursor(int cursorType)
         {
             if (cursorType == CURSOR_TARGET)
-            { 
+            {
                 using (MemoryStream memoryStream = new MemoryStream(Properties.Resources.Target))
                 {
                     this.Cursor = new Cursor(memoryStream);
@@ -163,6 +163,12 @@ namespace SpyDotNet
             {
                 Clipboard.SetText(parentWindowClass.Text);
             }
+        }
+
+        private void textBox_MouseHover(object sender, EventArgs e)
+        {
+            Control textBox = (Control)sender;
+            toolTip.SetToolTip(textBox, textBox.Text);
         }
 
     }       
