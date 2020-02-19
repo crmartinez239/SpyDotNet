@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainForm));
             this.label1 = new System.Windows.Forms.Label();
-            this.currentWindowHandle = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.copyCurrentClass = new System.Windows.Forms.Button();
             this.copyCurrentText = new System.Windows.Forms.Button();
@@ -52,6 +51,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.targetPicture = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.currentWindowHandle = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.targetPicture)).BeginInit();
@@ -67,19 +67,9 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Handle";
             // 
-            // currentWindowHandle
-            // 
-            this.currentWindowHandle.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.currentWindowHandle.Location = new System.Drawing.Point(67, 30);
-            this.currentWindowHandle.Name = "currentWindowHandle";
-            this.currentWindowHandle.ReadOnly = true;
-            this.currentWindowHandle.Size = new System.Drawing.Size(169, 18);
-            this.currentWindowHandle.TabIndex = 1;
-            this.currentWindowHandle.Text = "1232139087";
-            this.currentWindowHandle.WordWrap = false;
-            // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.currentWindowHandle);
             this.groupBox1.Controls.Add(this.copyCurrentClass);
             this.groupBox1.Controls.Add(this.copyCurrentText);
             this.groupBox1.Controls.Add(this.copyCurrentHandle);
@@ -87,7 +77,6 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.currentWindowText);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.currentWindowHandle);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(11, 12);
             this.groupBox1.Name = "groupBox1";
@@ -107,6 +96,7 @@
             this.copyCurrentClass.Size = new System.Drawing.Size(16, 16);
             this.copyCurrentClass.TabIndex = 7;
             this.copyCurrentClass.UseVisualStyleBackColor = true;
+            this.copyCurrentClass.Click += new System.EventHandler(this.copyCurrentClass_Click);
             // 
             // copyCurrentText
             // 
@@ -119,6 +109,7 @@
             this.copyCurrentText.Size = new System.Drawing.Size(16, 16);
             this.copyCurrentText.TabIndex = 6;
             this.copyCurrentText.UseVisualStyleBackColor = true;
+            this.copyCurrentText.Click += new System.EventHandler(this.copyCurrentText_Click);
             // 
             // copyCurrentHandle
             // 
@@ -131,6 +122,7 @@
             this.copyCurrentHandle.Size = new System.Drawing.Size(16, 16);
             this.copyCurrentHandle.TabIndex = 3;
             this.copyCurrentHandle.UseVisualStyleBackColor = true;
+            this.copyCurrentHandle.Click += new System.EventHandler(this.copyCurrentHandle_Click);
             // 
             // currentWindowClass
             // 
@@ -203,6 +195,7 @@
             this.copyParentClass.Size = new System.Drawing.Size(16, 16);
             this.copyParentClass.TabIndex = 7;
             this.copyParentClass.UseVisualStyleBackColor = true;
+            this.copyParentClass.Click += new System.EventHandler(this.copyParentClass_Click);
             // 
             // copyParentText
             // 
@@ -215,6 +208,7 @@
             this.copyParentText.Size = new System.Drawing.Size(16, 16);
             this.copyParentText.TabIndex = 6;
             this.copyParentText.UseVisualStyleBackColor = true;
+            this.copyParentText.Click += new System.EventHandler(this.copyParentText_Click);
             // 
             // copyParentHandle
             // 
@@ -227,6 +221,7 @@
             this.copyParentHandle.Size = new System.Drawing.Size(16, 16);
             this.copyParentHandle.TabIndex = 3;
             this.copyParentHandle.UseVisualStyleBackColor = true;
+            this.copyParentHandle.Click += new System.EventHandler(this.copyParentHandle_Click);
             // 
             // parentWindowClass
             // 
@@ -309,6 +304,17 @@
             this.timer1.Enabled = true;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // currentWindowHandle
+            // 
+            this.currentWindowHandle.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.currentWindowHandle.Location = new System.Drawing.Point(67, 29);
+            this.currentWindowHandle.Name = "currentWindowHandle";
+            this.currentWindowHandle.ReadOnly = true;
+            this.currentWindowHandle.Size = new System.Drawing.Size(169, 18);
+            this.currentWindowHandle.TabIndex = 8;
+            this.currentWindowHandle.Text = "1232139087";
+            this.currentWindowHandle.WordWrap = false;
+            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -338,7 +344,6 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox currentWindowHandle;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox currentWindowClass;
         private System.Windows.Forms.Label label3;
@@ -359,6 +364,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.PictureBox targetPicture;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.TextBox currentWindowHandle;
     }
 }
 

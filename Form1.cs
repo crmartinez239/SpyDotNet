@@ -122,5 +122,48 @@ namespace SpyDotNet
                 SetPicture(PICTURE_TARGET);
             }
         }
+
+        private void copyCurrentHandle_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(currentWindowHandle.Text);
+        }
+
+        private void copyCurrentText_Click(object sender, EventArgs e)
+        {
+            if (currentWindowText.Text != String.Empty)
+            {
+                Clipboard.SetText(currentWindowText.Text);
+            }
+        }
+
+        private void copyCurrentClass_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(currentWindowClass.Text);
+        }
+
+        private void copyParentHandle_Click(object sender, EventArgs e)
+        {
+            if (parentWindowHandle.Text != String.Empty)
+            {
+                Clipboard.SetText(parentWindowHandle.Text);
+            }
+        }
+
+        private void copyParentText_Click(object sender, EventArgs e)
+        {
+            if (parentWindowText.Text != String.Empty)
+            {
+                Clipboard.SetText(parentWindowText.Text);
+            }
+        }
+
+        private void copyParentClass_Click(object sender, EventArgs e)
+        {
+            if (parentWindowClass.Text != String.Empty)
+            {
+                Clipboard.SetText(parentWindowClass.Text);
+            }
+        }
+
     }       
 }
