@@ -7,17 +7,17 @@ using System.Windows.Forms;
 
 namespace SpyDotNet
 {
-    public partial class mainForm : Form
+    public partial class MainForm : Form
     {
-        private const int CURSOR_TARGET = 0;
-        private const int CURSOR_NORMAL = 1;
+        private const int CursorTarget = 0;
+        private const int CursorNormal = 1;
 
-        private const int PICTURE_TARGET = 0;
-        private const int PICTURE_STOP = 1;
+        private const int PictureTarget = 0;
+        private const int PictureStop = 1;
 
         private void SetCursor(int cursorType)
         {
-            if (cursorType == CURSOR_TARGET)
+            if (cursorType == CursorTarget)
             {
                 using (MemoryStream memoryStream = new MemoryStream(Properties.Resources.Target))
                 {
@@ -32,7 +32,7 @@ namespace SpyDotNet
 
         private void SetPicture(int pictureType)
         {
-            if (pictureType == PICTURE_TARGET)
+            if (pictureType == PictureTarget)
             {
                 targetPicture.Image = Properties.Resources.target1;
             }
@@ -42,15 +42,15 @@ namespace SpyDotNet
             }
         }
 
-        public mainForm()
+        public MainForm()
         {
             InitializeComponent();
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            var currentWindowInfo = Spy.GetCurrentWindowInfo();
-            var parentWindowInfo = Spy.GetParentWindowInfo();
+            Spy.WindowInfo currentWindowInfo = Spy.GetCurrentWindowInfo();
+            Spy.WindowInfo parentWindowInfo = Spy.GetParentWindowInfo();
 
             currentWindowHandle.Text = currentWindowInfo.Handle;
             currentWindowText.Text = currentWindowInfo.Text;
@@ -65,23 +65,23 @@ namespace SpyDotNet
         {
             if (timer1.Enabled)
             {
-                SetCursor(CURSOR_TARGET);
+                SetCursor(CursorTarget);
                 targetPicture.Image = null;
             }
         }
 
         private void targetPicture_MouseUp(object sender, MouseEventArgs e)
         {
-            SetCursor(CURSOR_NORMAL);
+            SetCursor(CursorNormal);
             if (timer1.Enabled)
             {
                 timer1.Enabled = false;
-                SetPicture(PICTURE_STOP);
+                SetPicture(PictureStop);
             }
             else
             {
                 timer1.Enabled = true;
-                SetPicture(PICTURE_TARGET);
+                SetPicture(PictureTarget);
             }
         }
 
