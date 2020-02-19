@@ -308,7 +308,7 @@
             // 
             this.targetPicture.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.targetPicture.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.targetPicture.Image = global::SpyDotNet.Properties.Resources.target1;
+            this.targetPicture.Image = ((System.Drawing.Image)(resources.GetObject("targetPicture.Image")));
             this.targetPicture.Location = new System.Drawing.Point(281, 117);
             this.targetPicture.Name = "targetPicture";
             this.targetPicture.Size = new System.Drawing.Size(32, 32);
